@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 public class GenerateTokenTest {
 
+    // Token Generation Test
     @Test(description = "Test functionality of login")
     public void loginTest() {
 
@@ -19,6 +20,15 @@ public class GenerateTokenTest {
         System.out.println(response.asPrettyString());
 
         Assert.assertNotNull(loginResponse.getToken());
+    }
+
+    // Token Generation with Builder Class
+    @Test(description = "Test Token Creation Functionality")
+    public void createTokenTest() {
+        LoginRequest request = new LoginRequest.Builder().username("admin").password("password123").build();
+
+        GenerateTokenService tokenService = new GenerateTokenService();
+        tokenService.login(request).then().log().all();
     }
 }
 
