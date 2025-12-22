@@ -43,4 +43,16 @@ public class BaseService {
     protected Response putRequestDenial (Object payload, String endpoint, String token) {
         return requestSpecification.contentType(ContentType.TEXT).cookie("token",token).body(payload).put(endpoint);
     }
+
+    protected Response patchRequest (Object payload, String endpoint, String token) {
+        return requestSpecification.contentType(ContentType.JSON).cookie("token",token).body(payload).patch(endpoint);
+    }
+
+    protected Response deleteRequest (String endpoint, String token) {
+        return requestSpecification.cookie("token", token).delete(endpoint);
+    }
+
+    protected Response deleteRequestUnauthorized (String endpoint) {
+        return requestSpecification.delete(endpoint);
+    }
 }
