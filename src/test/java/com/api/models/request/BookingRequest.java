@@ -2,7 +2,7 @@ package com.api.models.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CreateBookingRequest {
+public class BookingRequest {
 
     @JsonProperty("firstname")
     private String firstname;
@@ -22,9 +22,9 @@ public class CreateBookingRequest {
     @JsonProperty("additionalneeds")
     private String additionalneeds;
 
-    public CreateBookingRequest() {}
+    public BookingRequest() {}
 
-    public CreateBookingRequest(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
+    public BookingRequest(String firstname, String lastname, int totalprice, boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;
@@ -71,8 +71,8 @@ public class CreateBookingRequest {
             return this;
         }
 
-        public CreateBookingRequest build() {
-            return new CreateBookingRequest(firstname, lastname,totalprice, depositpaid, bookingdates, additionalneeds);
+        public BookingRequest build() {
+            return new BookingRequest(firstname, lastname,totalprice, depositpaid, bookingdates, additionalneeds);
         }
     }
 

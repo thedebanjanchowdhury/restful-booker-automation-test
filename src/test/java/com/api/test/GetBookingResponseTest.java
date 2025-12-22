@@ -10,22 +10,21 @@ import org.testng.annotations.Test;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-public class GetBookingTest {
+public class GetBookingResponseTest {
 
     private BookingService bookingService;
-    private GetBookingIDService getBookingIDService;
     private int bookingid;
 
     @BeforeMethod
     public void setup() {
         bookingService = new BookingService();
-        getBookingIDService = new GetBookingIDService();
+        GetBookingIDService getBookingIDService = new GetBookingIDService();
 
         Response idResponse = getBookingIDService.getAllBookings();
         bookingid = idResponse.jsonPath().getInt("bookingid[0]");
     }
 
-    @Test(description = "API-005: Get Booking Details")
+    @Test(description = "API-005: Get BookingResponse Details")
     public void getBookingTest () {
         Response response = bookingService.getBooking(String.valueOf(bookingid));
         Assert.assertEquals(response.getStatusCode(), 200, "Invalid Status Code");
@@ -38,7 +37,7 @@ public class GetBookingTest {
         GetBookingResponse bookingResponse = response.as(GetBookingResponse.class);
         Assert.assertNotNull(bookingResponse.getFirstname(), "Firstname is null");
         Assert.assertNotNull(bookingResponse.getLastname(), "Lastname is null");
-        Assert.assertNotNull(bookingResponse.getBookingdates(), "Booking Date is null");
+        Assert.assertNotNull(bookingResponse.getBookingdates(), "BookingResponse Date is null");
         Assert.assertNotNull(bookingResponse.getBookingdates().getCheckin(), "Checkin is null");
         Assert.assertNotNull(bookingResponse.getBookingdates().getCheckout(), "Checkout is null");
     }

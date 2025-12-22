@@ -3,7 +3,7 @@ package com.api.models.resoponse;
 import com.api.models.request.BookingDates;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Booking {
+public class BookingResponse {
 
     @JsonProperty("firstname")
     private String firstname;
@@ -23,7 +23,7 @@ public class Booking {
     @JsonProperty("additionalneeds")
     private String additionalneeds;
 
-    public Booking() {}
+    public BookingResponse() {}
 
     public String getFirstname() {
         return firstname;

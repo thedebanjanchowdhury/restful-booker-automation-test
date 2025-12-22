@@ -35,4 +35,12 @@ public class BaseService {
     protected Response getRequestWithParams (String endPoint, Map<String, Object> queryParams ) {
         return requestSpecification.queryParams(queryParams).get(endPoint);
     }
+
+    protected Response putRequest (Object payload, String endpoint, String token) {
+        return requestSpecification.contentType(ContentType.JSON).cookie("token",token).body(payload).put(endpoint);
+    }
+
+    protected Response putRequestDenial (Object payload, String endpoint, String token) {
+        return requestSpecification.contentType(ContentType.TEXT).cookie("token",token).body(payload).put(endpoint);
+    }
 }

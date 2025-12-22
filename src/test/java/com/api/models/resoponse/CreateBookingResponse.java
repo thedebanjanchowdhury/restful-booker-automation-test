@@ -6,8 +6,8 @@ public class CreateBookingResponse {
     @JsonProperty("bookingid")
     private int bookingid;
 
-    @JsonProperty("booking")
-    private Booking booking;
+    @JsonProperty("bookingResponse")
+    private BookingResponse bookingResponse;
 
     public CreateBookingResponse() {}
 
@@ -19,11 +19,11 @@ public class CreateBookingResponse {
         this.bookingid = bookingid;
     }
 
-    public Booking getBooking() {
-        return booking;
+    public BookingResponse getBooking() {
+        return bookingResponse;
     }
 
-    public void setBooking(Booking booking) {
-        this.booking = booking;
+    public void setBooking(BookingResponse bookingResponse) {
+        this.bookingResponse = bookingResponse;
     }
 }

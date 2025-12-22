@@ -2,28 +2,34 @@ package com.api.test;
 
 import com.api.base.BookingService;
 import com.api.models.request.BookingDates;
-import com.api.models.request.CreateBookingRequest;
+import com.api.models.request.BookingRequest;
 import com.api.models.resoponse.CreateBookingResponse;
 import io.restassured.response.Response;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
-public class CreateBookingTest {
+public class CreateBookingResponseTest {
+    private BookingService bookingService;
+    private BookingRequest request;
 
-    @Test(description = "Test script to test booking creation")
-    public void createBookingTest()  {
-        BookingService bookingService = new BookingService();
-
-        //Builder Class
-        CreateBookingRequest request = new CreateBookingRequest.Builder().firstname("Debanjan")
+    @BeforeMethod
+    public void setup() {
+        bookingService = new BookingService();
+        request = new BookingRequest.Builder().firstname("Debanjan")
                 .lastname("Chowdhury")
                 .totalprice(1000)
                 .depositpaid(true)
                 .bookingdates(new BookingDates("2025-01-01", "2025-01-02"))
                 .additionalneeds("Breakfast")
                 .build();
+
+    }
+
+    @Test(description = "API-004: Create BookingResponse Test")
+    public void createBookingTest()  {
 
         // Response, schema validation and deserialization
         Response response = bookingService.createBooking(request);
