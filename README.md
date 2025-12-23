@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # Restful-Booker API Test Automation (REST Assured + TestNG)
 
 This project is a **Java-based API test automation framework** for the public **Restful-Booker** API.[^1][^2]
