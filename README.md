@@ -1,291 +1,141 @@
-# Restful-Booker API Test Automation (REST Assured + TestNG)
+# Restful-Booker API Test Automation Framework
 
-This project is a **Java-based API test automation framework** for the public **Restful-Booker** API.[^1][^2]
-It is designed to look and feel like a real-world QA/SDET portfolio project, with full traceability from **Test Plan → Test Scenarios → JIRA-like Test Cases → Automated Tests**.
+This project is a comprehensive **API test automation framework** for the **Restful-Booker** API, built using **Java**, **REST Assured**, and **TestNG**. It demonstrates a scalable **Service Object Model** design, separating business logic, data models, and test execution for maximum maintainability and clarity.
 
-***
+The framework covers critical end-to-end workflows including authentication, booking management (CRUD), and health checks, with built-in schema validation and logging.
 
-## 🔍 Target API
-
-- **Base URL:** `https://restful-booker.herokuapp.com`[^1]
-- **Docs:** `https://restful-booker.herokuapp.com/apidoc/index.html`[^3]
-- **API Type:** Sample hotel booking CRUD API with authentication and several built-in bugs for practice.[^2][^1]
-
-Covered endpoints:
-
-- `GET /ping` – Health Check
-- `POST /auth` – Create Token
-- `POST /booking` – Create Booking
-- `GET /booking` – Get All Booking IDs
-- `GET /booking/{id}` – Get Booking By ID
-- `PUT /booking/{id}` – Update Booking
-- `PATCH /booking/{id}` – Partial Update Booking
-- `DELETE /booking/{id}` – Delete Booking[^4][^3]
-
-***
-
-## 🧱 Tech Stack \& Design
-
-**Languages \& Libraries**
-
-- Java (JDK 11+)
-- REST Assured – HTTP client \& assertions[^5][^6]
-- TestNG – test runner \& annotations[^7][^8]
-- Jackson – JSON ↔ Java object mapping
-- Lombok – POJO boilerplate reduction
-- Hamcrest – matcher assertions
-
-**Architecture**
-
-- **Service Object Model** (like Page Object, but for APIs)
-    - `AuthService` – `/auth`
-    - `BookingService` – `/booking`, `/booking/{id}`
-    - `HealthService` – `/ping`
-- **Base Layer**
-    - `BaseService` – common REST Assured setup (baseURI, content type, reusable HTTP methods)
-    - `BaseTest` – loads `base.url` from `config.properties`
-- **Models (POJOs)**
-    - `AuthRequest`, `AuthResponse`
-    - `Booking`, `BookingDates`
-    - `GetBookingResponse`, etc.
-- **Test Classes**
-    - `HealthCheckTest` – API-001 / TS_01
-    - `AuthTests` – API-002, API-003
-    - `CreateBookingTest` – API-004
-    - `GetBookingTest` – API-005, API-006
-    - `UpdateBookingTest` – API-008, API-009
-    - `DeleteBookingTest` – API-011, API-012
-
-Traceability:
-
-- **TS\_XX** – Test Scenario IDs (Test Plan level)
-- **API-XXX** – JIRA-style Test Case IDs, mapped in `@Test(description = "...")`
-
-***
-
-## ✅ Implemented Test Coverage
-
-**Functional Coverage**
-
-- Health Check (`GET /ping`) – status `201` (API up)[^9]
-- Auth:
-    - Valid credentials → token returned
-    - Invalid credentials → `"reason": "Bad credentials"`
-- Create Booking:
-    - Valid payload → `200 OK`, `bookingid` present, body matches input[^10][^9]
-- Get Booking:
-    - Get all booking IDs
-    - Get booking by ID (using `@BeforeMethod` setup)
-    - JSON schema validation for booking response
-- Update Booking:
-    - Authorized `PUT` with token (cookie) → fields updated
-    - Unauthorized `PUT` without token → `403 Forbidden`[^4][^9]
-- Delete Booking:
-    - Authorized `DELETE` with token → `201 Created`
-    - (Optional) follow-up `GET` to confirm `404`
-    - Unauthorized `DELETE` → `403 Forbidden`
-
-**Quality Practices**
-
-- JSON Schema validation for response bodies[^11][^12]
-- POJO deserialization for business-level assertions
-- Data setup/teardown using `@BeforeMethod` / `@AfterMethod`
-- Clear separation of:
-    - Test data setup
-    - Action under test
-    - Assertions
-    - Logging
-
-***
+---
 
 ## 📁 Project Structure
 
+The project follows a clean, modular package structure under `src/test/java/com.api`:
+
 ```text
-restful-booker-automation/
-├── src
-│   └── test
-│       └── java
-│           ├── base
-│           │   ├── BaseTest.java
-│           │   └── BaseService.java
-│           ├── services
-│           │   ├── AuthService.java
-│           │   ├── BookingService.java
-│           │   └── HealthService.java
-│           ├── models
-│           │   ├── AuthRequest.java
-│           │   ├── AuthResponse.java
-│           │   ├── Booking.java
-│           │   └── BookingDates.java
-│           └── tests
-│               ├── HealthCheckTest.java
-│               ├── AuthTests.java
-│               ├── CreateBookingTest.java
-│               ├── GetBookingTest.java
-│               ├── UpdateBookingTest.java
-│               └── DeleteBookingTest.java
-├── src
-│   └── main
-│       └── resources
-│           ├── config.properties
-│           └── schemas/
-│               └── get-booking-schema.json
-├── pom.xml
-└── README.md
+src
+└── test
+    └── java
+        └── com.api
+            ├── base                    # Core framework & Service logic
+            │   ├── BaseService.java       # Base REST Assured config & HTTP wrappers
+            │   ├── BookingService.java    # CRUD operations for /booking endpoints
+            │   ├── GenerateTokenService.java # Auth operations (/auth)
+            │   └── GetBookingIDService.java  # Booking lookup logic
+            │
+            ├── listeners               # TestNG Execution Hooks
+            │   └── TestListener.java      # Reporting/Logging integration
+            │
+            ├── models                  # POJO Data Models (Jackson)
+            │   ├── request             # Request Payloads
+            │   │   ├── BookingDates.java
+            │   │   ├── BookingRequest.java
+            │   │   └── LoginRequest.java
+            │   │
+            │   └── response            # Response DTOs
+            │       ├── BookingResponse.java
+            │       ├── CreateBookingResponse.java
+            │       ├── GetBookingResponse.java
+            │       └── LoginResponse.java
+            │
+            └── test                    # TestNG Test Classes
+                ├── HealthCheckTest.java       # API-001: Health Check
+                ├── GenerateTokenTest.java     # API-002: Auth Token
+                ├── CreateBookingResponseTest.java # API-004: Create Booking
+                ├── GetBookingResponseTest.java    # API-005: Get Booking Details
+                ├── GetBookingResponseIdTest.java  # API-006: Get Booking IDs
+                ├── UpdateBookingTest.java     # API-008: Update Booking
+                ├── PatchBookingTest.java      # API-010: Partial Update
+                └── DeleteBookingTest.java     # API-011: Delete Booking
+
+resources
+├── schemas                     # JSON Schemas for validation
+│   ├── create-booking-schema.json
+│   └── get-booking-schema.json
+└── log4j2.xml                  # Logging configuration
 ```
 
+---
 
-***
+## 🔧 Tech Stack
 
-## ⚙️ Setup \& Execution
+- **Language:** Java (JDK 11+)
+- **Testing Framework:** TestNG
+- **API Client:** REST Assured
+- **Object Mapper:** Jackson (POJO Serialization/Deserialization)
+- **Logging:** Log4j2
+- **Validation:** JSON Schema Validator + Hamcrest Matchers
+- **Build Tool:** Maven
+
+---
+
+## 🧱 Key Design Patterns
+
+### 1. Service Object Model (Base Layer)
+Instead of writing raw REST Assured calls in tests, we use **Service Classes** (e.g., `BookingService`, `GenerateTokenService`).
+- **`BaseService`**: Manages the `RequestSpecification`, base URL, and common HTTP methods (GET, POST, PUT, DELETE).
+- **Domain Services**: Encapsulate specific API operations. For example, `BookingService.createBooking()` handles the endpoint path, headers, and serialization, returning a `Response` object.
+
+### 2. POJO Data Models (Models Layer)
+Requests and responses are mapped to Java Objects using **Jackson**.
+- **`BookingRequest`**: Builder pattern for creating valid booking payloads.
+- **`BookingResponse`**: Strongly typed response objects for type-safe assertions (e.g., `response.getBookingid()`).
+
+### 3. Separation of Concerns (Test Layer)
+Test classes focus **only** on business logic and assertions.
+- Data setup is handled in `@BeforeMethod`.
+- API calls are delegated to Services.
+- Assertions verify status codes, schema compliance, and logical data integrity.
+
+---
+
+## ✅ Test Coverage & Features
+
+| Endpoint | Test Class | Coverage Description |
+| :--- | :--- | :--- |
+| **GET /ping** | `HealthCheckTest` | Verifies API is up (Status 201). |
+| **POST /auth** | `GenerateTokenTest` | Validates token generation with valid/invalid credentials. |
+| **POST /booking** | `CreateBookingResponseTest` | Creates booking, validates schema, verifies data persistence. |
+| **GET /booking/{id}** | `GetBookingResponseTest` | Fetches booking details, validates POJO fields. |
+| **GET /booking** | `GetBookingResponseIdTest` | Retrieves list of booking IDs. |
+| **PUT /booking/{id}** | `UpdateBookingTest` | Updates existing booking (Auth required). |
+| **PATCH /booking/{id}** | `PatchBookingTest` | Partially updates booking details. |
+| **DELETE /booking/{id}** | `DeleteBookingTest` | Deletes booking and verifies 404 on subsequent GET. |
+
+---
+
+## ⚙️ How to Run
 
 ### Prerequisites
-
-- JDK 11+ installed
+- Java JDK 11 or higher
 - Maven installed
-- IDE (IntelliJ / Eclipse)
 
-
-### Configuration
-
-`src/main/resources/config.properties`:
-
-```properties
-base.url=https://restful-booker.herokuapp.com
-```
-
-
-### Run tests (Maven)
-
-Run all TestNG tests:
-
+### Run All Tests
+Execute the full suite via Maven:
 ```bash
-mvn test
+mvn clean test
 ```
 
-Run a specific class:
-
+### Run Specific Test Class
+To run only the Create Booking tests:
 ```bash
-mvn test -Dtest=CreateBookingTest
+mvn test -Dtest=CreateBookingResponseTest
 ```
 
-Run a specific method:
+### Reporting
+After execution, TestNG reports are generated in:
+- `target/surefire-reports/index.html`
+- `target/surefire-reports/emailable-report.html`
 
-```bash
-mvn test -Dtest=UpdateBookingTest#updateBookingAuthorizedTest
-```
+---
 
-Reports:
+## 📝 Configuration
 
-- Default TestNG reports under `target/surefire-reports`[^13]
+- **Base URL:** Configured in `BaseService` (Default: `https://restful-booker.herokuapp.com`).
+- **Logging:** Configured via `src/test/resources/log4j2.xml`. Logs are printed to console and/or file depending on configuration.
+- **Schemas:** JSON schema files located in `src/test/resources/schemas` are used for contract testing.
 
-***
-
-## 🧪 Example: Create Booking Test (API-004)
-
-```java
-@Test(description = "API-004 / TS_04: Create Booking - happy path")
-public void createBooking_shouldReturn200AndBookingId() {
-
-    String requestBody = """
-        {
-          "firstname": "Jim",
-          "lastname": "Brown",
-          "totalprice": 111,
-          "depositpaid": true,
-          "bookingdates": {
-            "checkin": "2018-01-01",
-            "checkout": "2019-01-01"
-          },
-          "additionalneeds": "Breakfast"
-        }
-        """;
-
-    given()
-        .baseUri(baseUrl)
-        .contentType("application/json")
-        .body(requestBody)
-    .when()
-        .post("/booking")
-    .then()
-        .statusCode(200)
-        .body("bookingid", notNullValue())
-        .body("booking.firstname", equalTo("Jim"));
-}
-```
-
-
-***
-
-## 🎯 Why this project is on GitHub
-
-This repository is meant to demonstrate:
-
-- Ability to **analyze API docs** and design a **test plan**.[^3][^4]
-- Mapping between **Test Scenarios**, **JIRA-style Test Cases**, and **automated code**.
-- Building a **clean, maintainable REST Assured + TestNG framework** using industry patterns (Service Object Model, POJOs, config management).
-- Use of **JSON Schema validation**, **deserialization**, and **negative testing** for a public API.
-
-If you are a recruiter or hiring manager and want a code walkthrough or an extension (e.g., reporting with Allure/Extent, CI integration), that can be added on top of this base.
-
-***
+---
 
 ## 🔗 References
-
-- Restful-Booker API \& Docs[^2][^3][^1]
-- REST Assured usage \& examples[^6][^5]
-- Sample Restful-Booker automation projects for inspiration[^14][^15][^16][^17]
-<span style="display:none">[^18][^19][^20][^21][^22][^23][^24][^25]</span>
-
-<div align="center">⁂</div>
-
-[^1]: https://restful-booker.herokuapp.com
-
-[^2]: https://documenter.getpostman.com/view/4805376/RznFoxY8
-
-[^3]: https://restful-booker.herokuapp.com/apidoc/index.html
-
-[^4]: https://www.postman.com/automation-in-testing/restful-booker-collections/documentation/55eh7vh/restful-booker
-
-[^5]: https://www.geeksforgeeks.org/software-testing/how-to-test-api-with-rest-assured/
-
-[^6]: https://codoid.com/api-testing/how-to-perform-api-test-automation-using-rest-assured/
-
-[^7]: https://www.browserstack.com/guide/what-is-testng
-
-[^8]: https://artoftesting.com/testng-annotations
-
-[^9]: https://docs.robotframework.org/docs/examples/restfulbooker
-
-[^10]: https://github.com/DannyDainton/All-Things-Postman/blob/master/Examples/10_createNewBookings.md
-
-[^11]: https://mfaisalkhatri.github.io/2022/10/30/jsonschemavalidation/
-
-[^12]: https://dzone.com/articles/how-to-perform-json-schema-validation-in-api
-
-[^13]: https://github.com/cvenkatreddy/restful-booker-test
-
-[^14]: https://github.com/Tahanima/restful-booker-api-test-automation
-
-[^15]: https://github.com/mfaisalkhatri/rest-assured-examples
-
-[^16]: https://adamsajewicz.github.io/portfolio/2-rest-assured/
-
-[^17]: https://github.com/AbdallahHassanTorky/Restful-Booker
-
-[^18]: https://developers.booking.com/connectivity/docs
-
-[^19]: https://www.youtube.com/watch?v=OcGPbOgCc60
-
-[^20]: https://docs.pingidentity.com/pingoneaic/latest/am-rest/rest-endpoints.html
-
-[^21]: https://mfaisalkhatri.github.io/2022/03/14/endtoendapitestingrest-assured/
-
-[^22]: https://github.com/DominikCLK/Restful-Booker-API-Tests
-
-[^23]: https://developers.newbook.cloud/ota.php?api_options=rest
-
-[^24]: https://www.youtube.com/watch?v=o9KJhGHl49M
-
-[^25]: https://gist.github.com/rppowell-lasfs/522b2698825f362a83cf4af992c18800
-
+- **API Documentation:** [Restful-Booker API Docs](https://restful-booker.herokuapp.com/apidoc/index.html)
+- **REST Assured:** [REST Assured Usage Guide](https://github.com/rest-assured/rest-assured/wiki/Usage)
+- **TestNG:** [TestNG Documentation](https://testng.org/doc/documentation-main.html)
