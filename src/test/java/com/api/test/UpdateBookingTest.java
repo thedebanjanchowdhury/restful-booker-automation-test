@@ -10,6 +10,7 @@ import com.api.models.resoponse.LoginResponse;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Log;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
@@ -22,47 +23,78 @@ public class UpdateBookingTest {
 
     @BeforeMethod
     public void setup() {
-        LoginRequest request = new LoginRequest.Builder().username("admin").password("password123").build();
+
+        Log.info("Generating auth token");
+
+        LoginRequest request = new LoginRequest.Builder()
+                .username("admin")
+                .password("password123")
+                .build();
+
         GenerateTokenService generateTokenService = new GenerateTokenService();
-        LoginResponse loginResponse = generateTokenService.login(request).as(LoginResponse.class);
+        LoginResponse loginResponse =
+                generateTokenService.login(request).as(LoginResponse.class);
+
         token = loginResponse.getToken();
-        System.out.println("token: " + token);
+        Log.debug("Token generated successfully");
+
+        Log.info("Fetching existing booking IDs");
 
         GetBookingIDService getBookingIDService = new GetBookingIDService();
         Response idResponse = getBookingIDService.getAllBookings();
+
         bookingId = idResponse.jsonPath().getInt("bookingid[1]");
+        Log.info("Using bookingId: " + bookingId);
     }
 
     @Test(description = "API-007: Update Booking Check")
-    public void updateBookingTest() throws Exception{
+    public void updateBookingTest() {
+
+        Log.info("API-007: Starting Update Booking test");
 
         bookingService = new BookingService();
+
         BookingRequest bookingRequest = new BookingRequest.Builder()
                 .firstname("UpdatedJim")
                 .lastname("UpdatedBrown")
                 .totalprice(1000)
                 .depositpaid(false)
-                .bookingdates(new BookingDates("2025-12-25","2025-12-30"))
+                .bookingdates(new BookingDates("2025-12-25", "2025-12-30"))
                 .additionalneeds("Dinner")
                 .build();
 
-        Response updateRepsonse = bookingService
-                .updateBooking(bookingRequest,token,String.valueOf(bookingId));
-        updateRepsonse.then().statusCode(200)
+        Log.info("Sending update request for bookingId: " + bookingId);
+
+        Response updateResponse =
+                bookingService.updateBooking(bookingRequest, token, String.valueOf(bookingId));
+
+        updateResponse.then()
+                .statusCode(200)
                 .body("firstname", equalTo("UpdatedJim"))
                 .body("lastname", equalTo("UpdatedBrown"))
                 .body("totalprice", equalTo(1000));
 
-        Response response = bookingService.getBooking(String.valueOf(bookingId));
-        response.then().statusCode(200)
-        .body("firstname", equalTo("UpdatedJim"))
-        .body("lastname", equalTo("UpdatedBrown"))
-        .body("totalprice", equalTo(1000));
+        Log.info("Validating persisted booking data");
+
+        Response response =
+                bookingService.getBooking(String.valueOf(bookingId));
+
+        response.then()
+                .statusCode(200)
+                .body("firstname", equalTo("UpdatedJim"))
+                .body("lastname", equalTo("UpdatedBrown"))
+                .body("totalprice", equalTo(1000));
+
+        Log.info("Update Booking test passed");
     }
 
     @Test(description = "API-008: Update Booking (Unauthorized)")
-    public void updateBookingUnauthorizedTest(){
+    public void updateBookingUnauthorizedTest() {
+
+        Log.info("API-008: Starting Unauthorized Update Booking test");
+
         bookingService = new BookingService();
+
         String updatePayload = " {\n" +
                 "              \"firstname\": \"UnauthorizedJim\"\n" +
                 "            }";
@@ -70,11 +102,15 @@ public class UpdateBookingTest {
         given()
                 .baseUri("https://restful-booker.herokuapp.com")
                 .contentType("application/json")
-                .body(updatePayload)  // NO TOKEN
+                .body(updatePayload)   // no token
                 .when()
                 .put("/booking/{id}", bookingId)
                 .then()
-                .statusCode(403)  // Forbidden without token
+                .statusCode(403)
                 .body(containsString("Forbidden"));
+
+        Log.info("Unauthorized update correctly rejected");
+
+
     }
 }

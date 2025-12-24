@@ -1,18 +1,20 @@
 package com.api.test;
 
 import org.testng.annotations.Test;
+import utils.Log;
+
 import static io.restassured.RestAssured.*;
 
 public class HealthCheck {
 
     @Test(description = "API-001: Health Check - /ping returns 201")
     public void healthCheck() {
+        Log.info("API-001: Health Check - /ping returns 201");
         given()
                 .baseUri("https://restful-booker.herokuapp.com")
                 .when().get("/ping")
                 .then()
-                .log().all()
                 .statusCode(201);
+        Log.info("Health Check Completed Successfully");
     }
-
 }

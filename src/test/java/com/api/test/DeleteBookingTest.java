@@ -8,6 +8,7 @@ import com.api.models.resoponse.LoginResponse;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.Log;
 
 public class DeleteBookingTest {
 
@@ -20,26 +21,34 @@ public class DeleteBookingTest {
 
         bookingService = new BookingService();
 
+        Log.info("Token Creation Process Started");
         GenerateTokenService generateTokenService = new GenerateTokenService();
         LoginRequest loginRequest = new LoginRequest.Builder().username("admin").password("password123").build();
         LoginResponse loginResponse = generateTokenService.login(loginRequest).as(LoginResponse.class);
         token = loginResponse.getToken();
+        Log.info("Token Creation Process Finished; Token: " + token);
 
+        Log.info("ID Fetch Process Started");
         GetBookingIDService getBookingIDService = new GetBookingIDService();
         Response response = getBookingIDService.getAllBookings();
         bookingid = response.jsonPath().getInt("bookingid[0]");
+        Log.info("ID Fetch Process Finished; ID: " + bookingid);
     }
 
     @Test(description = "API-010: Delete Post (Authorization)")
     public void deleteWithAuth() {
+        Log.info("Delete Post Process Started");
         Response response = bookingService.deleteBooking(String.valueOf(bookingid),token);
-        response.then().statusCode(201).log().all();
+        response.then().statusCode(201);
+        Log.info("Delete Post Process Finished Successfully");
     }
 
     @Test(description = "API-011: Delete Post (Unauthorized)")
     public void deleteWithUnauthorized() {
+        Log.info("Delete Post Process Started");
         Response response = bookingService.deleteBookingUnauthorized(String.valueOf(bookingid));
         response.then().statusCode(403);
+        Log.info("Delete Post Process Finished Successfully");
     }
 
 }

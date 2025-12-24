@@ -9,10 +9,6 @@ import io.restassured.specification.RequestSpecification;
 import java.util.Map;
 
 public class BaseService {
-    // BaseURI
-    // Request Creation
-    // Response Handling
-
     private static final String BASE_URL = "https://restful-booker.herokuapp.com";
     private RequestSpecification requestSpecification;
 
