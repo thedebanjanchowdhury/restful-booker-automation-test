@@ -15,19 +15,26 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 public class CreateBookingResponseTest {
 
     private BookingService bookingService;
-    private BookingRequest request;
+    private BookingRequest request1,request2;
 
     @BeforeMethod
     public void setup() {
         Log.info("Initializing BookingService and BookingRequest");
 
         bookingService = new BookingService();
-        request = new BookingRequest.Builder()
+        request1 = new BookingRequest.Builder()
                 .firstname("Debanjan")
                 .lastname("Chowdhury")
                 .totalprice(1000)
                 .depositpaid(true)
                 .bookingdates(new BookingDates("2025-01-01", "2025-01-02"))
+                .additionalneeds("Breakfast")
+                .build();
+
+        request2 = new BookingRequest.Builder()
+                .firstname("Debanjan")
+                .totalprice(500)
+                .depositpaid(true)
                 .additionalneeds("Breakfast")
                 .build();
 
@@ -38,12 +45,12 @@ public class CreateBookingResponseTest {
     public void createBookingTest() {
 
         Log.info("Sending Create Booking request");
+        Response response = bookingService.createBooking(request1);
+        response.then().statusCode(200);
 
-        Response response = bookingService.createBooking(request);
 
         Log.info("Validating response status and schema");
         response.then()
-                .statusCode(200)
                 .body(matchesJsonSchemaInClasspath("schemas/create-booking-schema.json"));
 
         CreateBookingResponse res = response.as(CreateBookingResponse.class);
@@ -60,4 +67,16 @@ public class CreateBookingResponseTest {
 
         Log.info("Create Booking test passed successfully");
     }
+
+    @Test(description = "API-005: Booking Creation with Partial Fields")
+    public void createBookingWithPartialFieldsTest() {
+        Log.info("API-005: Creating Booking with Partial Fields");
+
+        Log.info("Sending Create Booking request");
+        Response response = bookingService.createBooking(request2);
+        response.then().statusCode(500);
+        String error = response.asString();
+        Assert.assertEquals(error, "Internal Server Error");
+    }
+
 }

@@ -43,10 +43,10 @@ public class PatchBookingTest {
         Log.info("Booking Id Created: " + bookingId);
     }
 
-    @Test(description = "API-009: Partial Update Using Patch")
+    @Test(description = "API-012: Partial Update Using Patch")
     public void testPatchBooking () {
 
-        Log.info("API-009: Partial Update Using Patch");
+        Log.info("API-012: Partial Update Using Patch");
 
         Log.info("Partial Update Request Object Initialized");
         BookingRequest bookingRequest = new BookingRequest.Builder()

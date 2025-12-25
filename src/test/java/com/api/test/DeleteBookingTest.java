@@ -35,19 +35,19 @@ public class DeleteBookingTest {
         Log.info("ID Fetch Process Finished; ID: " + bookingid);
     }
 
-    @Test(description = "API-010: Delete Post (Authorization)")
+    @Test(description = "API-013: Delete Post (Authorization)")
     public void deleteWithAuth() {
         Log.info("Delete Post Process Started");
         Response response = bookingService.deleteBooking(String.valueOf(bookingid),token);
-        response.then().statusCode(201);
+        response.then().statusCode(201).log().all();
         Log.info("Delete Post Process Finished Successfully");
     }
 
-    @Test(description = "API-011: Delete Post (Unauthorized)")
+    @Test(description = "API-014: Delete Post (Unauthorized)")
     public void deleteWithUnauthorized() {
         Log.info("Delete Post Process Started");
         Response response = bookingService.deleteBookingUnauthorized(String.valueOf(bookingid));
-        response.then().statusCode(403);
+        response.then().statusCode(403).log().all();
         Log.info("Delete Post Process Finished Successfully");
     }
 

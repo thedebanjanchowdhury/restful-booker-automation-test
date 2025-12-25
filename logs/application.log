@@ -172,3 +172,256 @@
 2025-12-24 12:57:40 [main] INFO  Log - Authentication Process Started
 2025-12-24 12:57:40 [main] INFO  Log - Login Request called
 2025-12-24 12:57:42 [main] INFO  Log - Authentication Process Ended, token: c65e55bc7368cbf
+2025-12-25 08:11:51 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:11:51 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:11:52 [main] INFO  Log - Login Request called
+2025-12-25 08:11:55 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:11:55 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:11:55 [main] INFO  Log - Login Request called
+2025-12-25 08:11:57 [main] INFO  Log - Authentication Process Ended, token: 8de27bc77e7de33
+2025-12-25 08:12:36 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:12:36 [main] INFO  Log - API-001: Health Check - /ping returns 201
+2025-12-25 08:12:39 [main] INFO  Log - Health Check Completed Successfully
+2025-12-25 08:29:07 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:29:07 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:29:08 [main] INFO  Log - Login Request called
+2025-12-25 08:29:09 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:29:09 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:29:10 [main] INFO  Log - Login Request called
+2025-12-25 08:29:12 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:29:12 [main] INFO  Log - Login Request called
+2025-12-25 08:29:13 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:29:13 [main] INFO  Log - Login Request called
+2025-12-25 08:29:14 [main] INFO  Log - Authentication Process Ended, token: df46eb9aeb895a3
+2025-12-25 08:29:14 [main] INFO  Log - Authentication Process Ended, token: 6cdcf7c0dd92820
+2025-12-25 08:29:37 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:29:37 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:29:38 [main] INFO  Log - Login Request called
+2025-12-25 08:29:41 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:29:41 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:29:41 [main] INFO  Log - Login Request called
+2025-12-25 08:29:43 [main] INFO  Log - Authentication Process Ended, token: eed0a32006bc006
+2025-12-25 08:31:26 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:31:26 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:31:27 [main] INFO  Log - Login Request called
+2025-12-25 08:31:30 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:31:30 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:31:30 [main] INFO  Log - Login Request called
+2025-12-25 08:31:32 [main] INFO  Log - Authentication Process Ended, token: 2c9ea83bc1f9fb3
+2025-12-25 08:32:35 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:32:35 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:32:36 [main] INFO  Log - Login Request called
+2025-12-25 08:32:40 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:32:40 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:32:40 [main] INFO  Log - Login Request called
+2025-12-25 08:32:41 [main] INFO  Log - Authentication Process Ended, token: 312d9bbb6975947
+2025-12-25 08:33:36 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:33:36 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:33:37 [main] INFO  Log - Login Request called
+2025-12-25 08:33:42 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:33:42 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:33:42 [main] INFO  Log - Login Request called
+2025-12-25 08:33:43 [main] INFO  Log - Authentication Process Ended, token: 6bd5cd93c9062d8
+2025-12-25 08:35:03 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 08:35:04 [main] INFO  Log - Unauthorized Authentication Process Started
+2025-12-25 08:35:04 [main] INFO  Log - Login Request called
+2025-12-25 08:35:08 [main] INFO  Log - Unauthorized Authentication Process Ended Successfully
+2025-12-25 08:35:08 [main] INFO  Log - Authentication Process Started
+2025-12-25 08:35:08 [main] INFO  Log - Login Request called
+2025-12-25 08:35:10 [main] INFO  Log - Authentication Process Ended, token: 28ef05ed7ce17ed
+2025-12-25 10:51:00 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 10:51:00 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 10:51:00 [main] INFO  Log - Sending Create Booking request
+2025-12-25 10:51:00 [main] INFO  Log - Create Booking Request called
+2025-12-25 10:51:04 [main] INFO  Log - Validating response status and schema
+2025-12-25 10:51:04 [main] INFO  Log - Response deserialized successfully. Booking ID: 3003
+2025-12-25 10:51:04 [main] INFO  Log - Create Booking test passed successfully
+2025-12-25 11:38:39 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 11:38:39 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:38:39 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:38:39 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:38:43 [main] INFO  Log - Validating response status and schema
+2025-12-25 11:38:44 [main] INFO  Log - Response deserialized successfully. Booking ID: 5794
+2025-12-25 11:38:44 [main] INFO  Log - Create Booking test passed successfully
+2025-12-25 11:38:44 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:38:44 [main] INFO  Log - API-005: Creating Booking with Partial Fields
+2025-12-25 11:38:44 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:38:44 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:39:12 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 11:39:12 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:39:12 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:39:12 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:39:16 [main] INFO  Log - Validating response status and schema
+2025-12-25 11:39:16 [main] INFO  Log - Response deserialized successfully. Booking ID: 6325
+2025-12-25 11:39:16 [main] INFO  Log - Create Booking test passed successfully
+2025-12-25 11:39:16 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:39:16 [main] INFO  Log - API-005: Creating Booking with Partial Fields
+2025-12-25 11:39:16 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:39:16 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:41:20 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 11:41:20 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:41:20 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:41:20 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:41:24 [main] INFO  Log - Validating response status and schema
+2025-12-25 11:41:25 [main] INFO  Log - Response deserialized successfully. Booking ID: 774
+2025-12-25 11:41:25 [main] INFO  Log - Create Booking test passed successfully
+2025-12-25 11:41:25 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:41:25 [main] INFO  Log - API-005: Creating Booking with Partial Fields
+2025-12-25 11:41:25 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:41:25 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:41:51 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 11:41:51 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:41:52 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:41:52 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:41:55 [main] INFO  Log - Validating response status and schema
+2025-12-25 11:41:56 [main] INFO  Log - Response deserialized successfully. Booking ID: 1255
+2025-12-25 11:41:56 [main] INFO  Log - Create Booking test passed successfully
+2025-12-25 11:41:56 [main] INFO  Log - Initializing BookingService and BookingRequest
+2025-12-25 11:41:56 [main] INFO  Log - API-005: Creating Booking with Partial Fields
+2025-12-25 11:41:56 [main] INFO  Log - Sending Create Booking request
+2025-12-25 11:41:56 [main] INFO  Log - Create Booking Request called
+2025-12-25 11:52:39 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 11:52:39 [main] INFO  Log - API-007: Get All Booking Response IDs
+2025-12-25 11:52:39 [main] INFO  Log - Getting All BookingResponse IDs
+2025-12-25 11:52:40 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 11:52:44 [main] INFO  Log - Mapping all BookingResponse IDs to Booking Response
+2025-12-25 11:52:45 [main] INFO  Log - Assertion for All Returned Booking IDs
+2025-12-25 11:52:45 [main] INFO  Log - GetAllBookingIDTest Completed Successfully
+2025-12-25 11:52:45 [main] INFO  Log - API-008: Get Booking With Params
+2025-12-25 11:52:45 [main] INFO  Log - Getting BookingResponse IDs filtered by Name Test Started
+2025-12-25 11:52:45 [main] INFO  Log - Get Booking Id With Params Request called
+2025-12-25 11:52:45 [main] INFO  Log - Build Query Params Request called
+2025-12-25 11:52:47 [main] INFO  Log - Getting BookingResponse IDs filtered by Name Test Completed
+2025-12-25 12:05:04 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 12:05:04 [main] INFO  Log - API-007: Get All Booking Response IDs
+2025-12-25 12:05:04 [main] INFO  Log - Getting All BookingResponse IDs
+2025-12-25 12:05:05 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 12:05:08 [main] INFO  Log - Mapping all BookingResponse IDs to Booking Response
+2025-12-25 12:05:10 [main] INFO  Log - Assertion for All Returned Booking IDs
+2025-12-25 12:05:10 [main] INFO  Log - GetAllBookingIDTest Completed Successfully
+2025-12-25 12:05:10 [main] INFO  Log - API-008: Create Booking and Fetch Booking IDs by Name
+2025-12-25 12:05:10 [main] INFO  Log - Create Booking Request called
+2025-12-25 12:05:12 [main] INFO  Log - Booking created successfully with ID: 3062
+2025-12-25 12:05:12 [main] INFO  Log - Get Booking Id With Params Request called
+2025-12-25 12:05:12 [main] INFO  Log - Build Query Params Request called
+2025-12-25 12:05:14 [main] INFO  Log - Fetching Booking IDs by Name completed successfully
+2025-12-25 12:05:37 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 12:05:37 [main] INFO  Log - API-007: Get All Booking Response IDs
+2025-12-25 12:05:37 [main] INFO  Log - Getting All BookingResponse IDs
+2025-12-25 12:05:38 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 12:05:42 [main] INFO  Log - Mapping all BookingResponse IDs to Booking Response
+2025-12-25 12:05:43 [main] INFO  Log - Assertion for All Returned Booking IDs
+2025-12-25 12:05:43 [main] INFO  Log - GetAllBookingIDTest Completed Successfully
+2025-12-25 12:05:43 [main] INFO  Log - API-008: Create Booking and Fetch Booking IDs by Name
+2025-12-25 12:05:43 [main] INFO  Log - Create Booking Request called
+2025-12-25 12:05:45 [main] INFO  Log - Booking created successfully with ID: 3433
+2025-12-25 12:05:45 [main] INFO  Log - Get Booking Id With Params Request called
+2025-12-25 12:05:45 [main] INFO  Log - Build Query Params Request called
+2025-12-25 12:05:47 [main] INFO  Log - Fetching Booking IDs by Name completed successfully
+2025-12-25 12:06:00 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 12:06:00 [main] INFO  Log - API-007: Get All Booking Response IDs
+2025-12-25 12:06:00 [main] INFO  Log - Getting All BookingResponse IDs
+2025-12-25 12:06:01 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 12:06:05 [main] INFO  Log - Mapping all BookingResponse IDs to Booking Response
+2025-12-25 12:06:06 [main] INFO  Log - Assertion for All Returned Booking IDs
+2025-12-25 12:06:06 [main] INFO  Log - GetAllBookingIDTest Completed Successfully
+2025-12-25 12:06:06 [main] INFO  Log - API-008: Create Booking and Fetch Booking IDs by Name
+2025-12-25 12:06:06 [main] INFO  Log - Create Booking Request called
+2025-12-25 12:06:08 [main] INFO  Log - Booking created successfully with ID: 3699
+2025-12-25 12:06:08 [main] INFO  Log - Get Booking Id With Params Request called
+2025-12-25 12:06:08 [main] INFO  Log - Build Query Params Request called
+2025-12-25 12:06:10 [main] INFO  Log - Fetching Booking IDs by Name completed successfully
+2025-12-25 13:13:31 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 13:13:31 [main] INFO  Log - Setup Method, Extracting Booking ID
+2025-12-25 13:13:31 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 13:13:36 [main] INFO  Log - API-005: Get BookingResponse Details
+2025-12-25 13:13:36 [main] INFO  Log - Get Booking Test Started
+2025-12-25 13:13:36 [main] INFO  Log - GetBooking with ID called
+2025-12-25 13:13:38 [main] INFO  Log - JSON Schema Validation Started
+2025-12-25 13:13:38 [main] INFO  Log - Get Booking Test Completed Successfully
+2025-12-25 13:13:38 [main] INFO  Log - Setup Method, Extracting Booking ID
+2025-12-25 13:13:38 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 13:13:41 [main] INFO  Log - API-006: Get Booking with Invalid ID
+2025-12-25 13:13:41 [main] INFO  Log - Get Booking Test Started
+2025-12-25 13:13:41 [main] INFO  Log - GetBooking with ID called
+2025-12-25 13:13:43 [main] INFO  Log - Invalid Booking Test Completed Successfully
+2025-12-25 14:29:03 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 14:29:04 [main] INFO  Log - Token Creation Process Started
+2025-12-25 14:29:04 [main] INFO  Log - Login Request called
+2025-12-25 14:29:07 [main] INFO  Log - Token Creation Process Finished; Token: 2a6a75ebf0a1d95
+2025-12-25 14:29:07 [main] INFO  Log - ID Fetch Process Started
+2025-12-25 14:29:07 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 14:29:10 [main] INFO  Log - ID Fetch Process Finished; ID: 830
+2025-12-25 14:29:10 [main] INFO  Log - Delete Post Process Started
+2025-12-25 14:29:10 [main] INFO  Log - Delete Booking Request called
+2025-12-25 14:29:12 [main] INFO  Log - Delete Post Process Finished Successfully
+2025-12-25 14:29:12 [main] INFO  Log - Token Creation Process Started
+2025-12-25 14:29:12 [main] INFO  Log - Login Request called
+2025-12-25 14:29:14 [main] INFO  Log - Token Creation Process Finished; Token: 96f41bbda80e78d
+2025-12-25 14:29:14 [main] INFO  Log - ID Fetch Process Started
+2025-12-25 14:29:14 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 14:29:17 [main] INFO  Log - ID Fetch Process Finished; ID: 5647
+2025-12-25 14:29:17 [main] INFO  Log - Delete Post Process Started
+2025-12-25 14:29:17 [main] INFO  Log - Delete Booking Unauthorized Request called
+2025-12-25 14:29:19 [main] INFO  Log - Delete Post Process Finished Successfully
+2025-12-25 14:29:41 [main] INFO  Utils - [TestNG] Running:
+  C:\Users\User\AppData\Local\JetBrains\IntelliJIdea2025.2\temp-testng-customsuite.xml
+
+2025-12-25 14:29:41 [main] INFO  Log - Token Creation Process Started
+2025-12-25 14:29:41 [main] INFO  Log - Login Request called
+2025-12-25 14:29:45 [main] INFO  Log - Token Creation Process Finished; Token: 20b3bdad131f0a8
+2025-12-25 14:29:45 [main] INFO  Log - ID Fetch Process Started
+2025-12-25 14:29:45 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 14:29:49 [main] INFO  Log - ID Fetch Process Finished; ID: 5647
+2025-12-25 14:29:49 [main] INFO  Log - Delete Post Process Started
+2025-12-25 14:29:49 [main] INFO  Log - Delete Booking Request called
+2025-12-25 14:29:51 [main] INFO  Log - Delete Post Process Finished Successfully
+2025-12-25 14:29:51 [main] INFO  Log - Token Creation Process Started
+2025-12-25 14:29:51 [main] INFO  Log - Login Request called
+2025-12-25 14:29:53 [main] INFO  Log - Token Creation Process Finished; Token: 097fc8ec37c3476
+2025-12-25 14:29:53 [main] INFO  Log - ID Fetch Process Started
+2025-12-25 14:29:53 [main] INFO  Log - Get All Bookings Request called
+2025-12-25 14:29:57 [main] INFO  Log - ID Fetch Process Finished; ID: 4893
+2025-12-25 14:29:57 [main] INFO  Log - Delete Post Process Started
+2025-12-25 14:29:57 [main] INFO  Log - Delete Booking Unauthorized Request called
+2025-12-25 14:29:59 [main] INFO  Log - Delete Post Process Finished Successfully

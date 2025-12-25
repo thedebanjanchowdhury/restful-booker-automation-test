@@ -3,9 +3,12 @@ package com.api.test;
 import com.api.base.GenerateTokenService;
 import com.api.models.request.LoginRequest;
 import com.api.models.resoponse.LoginResponse;
+import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Log;
+
+import static org.hamcrest.Matchers.*;
 
 public class GenerateTokenTest {
 
@@ -27,7 +30,10 @@ public class GenerateTokenTest {
         Log.info("Unauthorized Authentication Process Started");
         LoginRequest loginRequest = new LoginRequest.Builder().username("debanjan").password("debanjan123").build();
         GenerateTokenService tokenService = new GenerateTokenService();
-        tokenService.login(loginRequest);
+        tokenService.login(loginRequest)
+                .then()
+                .statusCode(200)
+                .body("reason", equalTo("Bad credentials"));
         Log.info("Unauthorized Authentication Process Ended Successfully");
     }
 }
