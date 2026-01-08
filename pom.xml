@@ -10,9 +10,40 @@
   <name>restAssuredLearn</name>
   <url>http://maven.apache.org</url>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ${suite}.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <allure.version>2.24.0</allure.version>
+      <aspectj.version>1.9.20.1</aspectj.version>
   </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-bom</artifactId>
+                <version>${allure.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
   <dependencies>
       <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
@@ -35,7 +66,6 @@
           <artifactId>hamcrest</artifactId>
           <version>3.0</version>
       </dependency>
-
 
       <!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
       <dependency>
@@ -98,6 +128,11 @@
           <groupId>org.apache.logging.log4j</groupId>
           <artifactId>log4j-slf4j2-impl</artifactId>
           <version>2.25.3</version>
+      </dependency>
+
+      <dependency>
+          <groupId>io.qameta.allure</groupId>
+          <artifactId>allure-testng</artifactId>
       </dependency>
   </dependencies>
 </project>

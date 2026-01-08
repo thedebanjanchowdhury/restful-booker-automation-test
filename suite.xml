@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Parallel Test Suite" parallel="methods"
+       thread-count="4">
+
+    <listeners>
+        <listener
+                class-name="com.api.listeners.TestListener"/>
+    </listeners>
+
+    <test name="API Tests">
+        <groups>
+            <run>
+                <include name="auth"/>
+                <include name="user"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.api.test.CreateBookingResponseTest"/>
+            <class name="com.api.test.DeleteBookingTest"/>
+            <class name="com.api.test.GenerateTokenTest"/>
+            <class name="com.api.test.GetBookingResponseIdTest"/>
+            <class name="com.api.test.GetBookingResponseTest"/>
+            <class name="com.api.test.HealthCheck"/>
+            <class name="com.api.test.PatchBookingTest"/>
+            <class name="com.api.test.UpdateBookingTest"/>
+        </classes>
+    </test>
+</suite>
