@@ -27,7 +27,7 @@ jobs:
       run: mvn clean test -Dsuite=suite -X
 
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@4.4.3
+      uses: actions/upload-artifact@v6.0.0
       with:
         name: Logs
         path: logs/
