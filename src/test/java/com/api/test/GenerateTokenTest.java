@@ -13,7 +13,10 @@ import static org.hamcrest.Matchers.*;
 public class GenerateTokenTest {
 
     // Token Generation
-    @Test(description = "API-002: Create Auth Token (Happy Path)")
+    @Test(
+            description = "API-002: Create Auth Token (Happy Path)",
+            groups = {"auth"}
+    )
     public void createTokenTest() {
 
         Log.info("Authentication Process Started");
@@ -25,7 +28,10 @@ public class GenerateTokenTest {
         Log.info("Authentication Process Ended, token: " + response.getToken());
     }
 
-    @Test(description = "API-003: Auth Token Failure (Bad Creds)")
+    @Test(
+            description = "API-003: Auth Token Failure (Bad Creds)",
+            groups = {"auth"}
+    )
     public void authTokenFailureTest() {
         Log.info("Unauthorized Authentication Process Started");
         LoginRequest loginRequest = new LoginRequest.Builder().username("debanjan").password("debanjan123").build();

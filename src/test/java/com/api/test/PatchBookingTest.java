@@ -43,7 +43,10 @@ public class PatchBookingTest {
         Log.info("Booking Id Created: " + bookingId);
     }
 
-    @Test(description = "API-012: Partial Update Using Patch")
+    @Test(
+            description = "API-012: Partial Update Using Patch",
+            groups = {"user"}
+    )
     public void testPatchBooking () {
 
         Log.info("API-012: Partial Update Using Patch");

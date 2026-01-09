@@ -26,7 +26,10 @@ public class GetBookingResponseTest {
         bookingid = idResponse.jsonPath().getInt("bookingid[0]");
     }
 
-    @Test(description = "API-008: Get BookingResponse Details")
+    @Test(
+            description = "API-008: Get BookingResponse Details",
+            groups = {"user"}
+    )
     public void getBookingTest () {
         Log.info("API-005: Get BookingResponse Details");
 
@@ -50,7 +53,10 @@ public class GetBookingResponseTest {
         Log.info("Get Booking Test Completed Successfully");
     }
 
-    @Test(description = "API-009: GetBooking with Invalid ID")
+    @Test(
+            description = "API-009: GetBooking with Invalid ID",
+            groups = {"user"}
+    )
     public void getBookingWithInvalidIdTest () {
         Log.info("API-006: Get Booking with Invalid ID");
 

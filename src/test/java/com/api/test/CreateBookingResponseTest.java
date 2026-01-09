@@ -41,7 +41,10 @@ public class CreateBookingResponseTest {
         Log.debug("BookingRequest built successfully");
     }
 
-    @Test(description = "API-004: Create BookingResponse Test")
+    @Test(
+            description = "API-004: Create BookingResponse Test",
+            groups = {"user"}
+    )
     public void createBookingTest() {
 
         Log.info("Sending Create Booking request");
@@ -68,7 +71,10 @@ public class CreateBookingResponseTest {
         Log.info("Create Booking test passed successfully");
     }
 
-    @Test(description = "API-005: Booking Creation with Partial Fields")
+    @Test(
+            description = "API-005: Booking Creation with Partial Fields",
+            groups = {"user"}
+    )
     public void createBookingWithPartialFieldsTest() {
         Log.info("API-005: Creating Booking with Partial Fields");
 

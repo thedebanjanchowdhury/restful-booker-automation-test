@@ -7,7 +7,10 @@ import static io.restassured.RestAssured.*;
 
 public class HealthCheck {
 
-    @Test(description = "API-001: Health Check - /ping returns 201")
+    @Test(
+            description = "API-001: Health Check - /ping returns 201",
+            groups = {"auth"}
+    )
     public void healthCheck() {
         Log.info("API-001: Health Check - /ping returns 201");
         given()

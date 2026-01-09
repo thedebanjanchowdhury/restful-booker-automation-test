@@ -18,7 +18,10 @@ public class GetBookingResponseIdTest {
 
     private GetBookingIDService booking;
 
-    @Test(description = "API-006: Create Booking and Fetch Booking IDs by Name")
+    @Test(
+            description = "API-006: Create Booking and Fetch Booking IDs by Name",
+            groups = {"user"}
+    )
     public void getBookingWithParams() {
 
         Log.info("API-008: Create Booking and Fetch Booking IDs by Name");
@@ -64,7 +67,10 @@ public class GetBookingResponseIdTest {
         Log.info("Fetching Booking IDs by Name completed successfully");
     }
 
-    @Test(description = "API-007: Returns List of BookingResponse IDs")
+    @Test(
+            description = "API-007: Returns List of BookingResponse IDs",
+            groups = {"user"}
+    )
     public void getAllBookingIdTest() {
         Log.info("API-007: Get All Booking Response IDs");
 

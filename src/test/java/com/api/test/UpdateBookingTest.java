@@ -47,7 +47,10 @@ public class UpdateBookingTest {
         Log.info("Using bookingId: " + bookingId);
     }
 
-    @Test(description = "API-010: Update Booking Check")
+    @Test(
+            description = "API-010: Update Booking Check",
+            groups = {"user"}
+    )
     public void updateBookingTest() {
 
         Log.info("API-010: Starting Update Booking test");
@@ -88,7 +91,10 @@ public class UpdateBookingTest {
         Log.info("Update Booking test passed");
     }
 
-    @Test(description = "API-011: Update Booking (Unauthorized)")
+    @Test(
+            description = "API-011: Update Booking (Unauthorized)",
+            groups = {"user"}
+    )
     public void updateBookingUnauthorizedTest() {
 
         Log.info("API-011: Starting Unauthorized Update Booking test");
