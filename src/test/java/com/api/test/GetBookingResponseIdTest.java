@@ -39,6 +39,11 @@ public class GetBookingResponseIdTest {
                 .build();
 
         Response createResponse = bookingService.createBooking(request);
+        if (createResponse.getStatusCode() == 418) {
+            String warningMsg = "API Blocked (418 I'm a teapot). Skipping test.";
+            Log.warn(warningMsg);
+            throw new org.testng.SkipException(warningMsg);
+        }
         if (createResponse.getStatusCode() != 200) {
             String errorMsg = "Failed booking in test. Status: " + createResponse.getStatusLine() + ", Body: " + createResponse.asString();
             Log.error(errorMsg);
