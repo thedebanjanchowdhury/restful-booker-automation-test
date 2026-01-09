@@ -6,7 +6,7 @@ import com.api.base.GetBookingIDService;
 import com.api.models.request.LoginRequest;
 import com.api.models.resoponse.LoginResponse;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Log;
 
@@ -16,7 +16,7 @@ public class DeleteBookingTest {
     private int bookingid;
     private BookingService bookingService;
 
-    @BeforeMethod
+    @BeforeClass
     public void setup () {
 
         bookingService = new BookingService();

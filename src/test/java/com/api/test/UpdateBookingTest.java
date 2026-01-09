@@ -8,7 +8,7 @@ import com.api.models.request.BookingRequest;
 import com.api.models.request.LoginRequest;
 import com.api.models.resoponse.LoginResponse;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Log;
 
@@ -21,7 +21,7 @@ public class UpdateBookingTest {
     private String token;
     private int bookingId;
 
-    @BeforeMethod
+    @BeforeClass
     public void setup() {
 
         Log.info("Generating auth token");

@@ -6,7 +6,7 @@ import com.api.models.request.BookingRequest;
 import com.api.models.resoponse.CreateBookingResponse;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Log;
 
@@ -17,7 +17,7 @@ public class CreateBookingResponseTest {
     private BookingService bookingService;
     private BookingRequest request1,request2;
 
-    @BeforeMethod
+    @BeforeClass
     public void setup() {
         Log.info("Initializing BookingService and BookingRequest");
 

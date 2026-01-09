@@ -5,7 +5,7 @@ import com.api.base.BookingService;
 import com.api.models.resoponse.GetBookingResponse;
 import io.restassured.response.Response;
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import utils.Log;
 
@@ -16,7 +16,7 @@ public class GetBookingResponseTest {
     private BookingService bookingService;
     private int bookingid;
 
-    @BeforeMethod
+    @BeforeClass
     public void setup() {
         Log.info("Setup Method, Extracting Booking ID");
         bookingService = new BookingService();
