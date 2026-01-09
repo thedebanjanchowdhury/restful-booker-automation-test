@@ -53,6 +53,12 @@ public class CreateBookingResponseTest {
 
 
         Log.info("Validating response status and schema");
+        if (response.getStatusCode() != 200) {
+            String errorMsg = "Failed booking. Status: " + response.getStatusLine() + ", Body: " + response.asString();
+            Log.error(errorMsg);
+        }
+        response.then().statusCode(200);
+
         response.then()
                 .body(matchesJsonSchemaInClasspath("schemas/create-booking-schema.json"));
 

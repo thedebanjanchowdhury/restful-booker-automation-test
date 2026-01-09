@@ -32,7 +32,13 @@ public class PatchBookingTest {
 
         Log.info("Token Request Started");
         GenerateTokenService generateTokenService = new GenerateTokenService();
-        LoginResponse loginResponse = generateTokenService.login(loginRequest).as(LoginResponse.class);
+        Response loginResp = generateTokenService.login(loginRequest);
+        if (loginResp.getStatusCode() != 200) {
+            String errorMsg = "Login failed in setup. Status: " + loginResp.getStatusLine() + ", Body: " + loginResp.asString();
+            Log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
+        LoginResponse loginResponse = loginResp.as(LoginResponse.class);
         token = loginResponse.getToken();
         Log.info("Token Created: " + token);
 
@@ -46,6 +52,11 @@ public class PatchBookingTest {
                 .additionalneeds("Lunch")
                 .build();
         Response createResponse = bookingService.createBooking(bookingRequest);
+        if (createResponse.getStatusCode() != 200) {
+            String errorMsg = "Failed to create booking in setup. Status: " + createResponse.getStatusLine() + ", Body: " + createResponse.asString();
+            Log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
         bookingId = createResponse.jsonPath().getInt("bookingid");
         Log.info("Created booking for patch test with ID: " + bookingId);
     }

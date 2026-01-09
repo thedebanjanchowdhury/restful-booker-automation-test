@@ -32,8 +32,14 @@ public class UpdateBookingTest {
                 .build();
 
         GenerateTokenService generateTokenService = new GenerateTokenService();
-        LoginResponse loginResponse =
-                generateTokenService.login(request).as(LoginResponse.class);
+        Response loginResp = generateTokenService.login(request);
+        
+        if (loginResp.getStatusCode() != 200) {
+            String errorMsg = "Login failed in setup. Status: " + loginResp.getStatusLine() + ", Body: " + loginResp.asString();
+            Log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
+        LoginResponse loginResponse = loginResp.as(LoginResponse.class);
 
         token = loginResponse.getToken();
         Log.debug("Token generated successfully");
@@ -50,6 +56,11 @@ public class UpdateBookingTest {
                 .build();
         
         Response createResponse = bookingService.createBooking(bookingRequest);
+        if (createResponse.getStatusCode() != 200) {
+            String errorMsg = "Failed to create booking in setup. Status: " + createResponse.getStatusLine() + ", Body: " + createResponse.asString();
+            Log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
         bookingId = createResponse.jsonPath().getInt("bookingid");
         Log.info("Created booking with ID: " + bookingId);
     }

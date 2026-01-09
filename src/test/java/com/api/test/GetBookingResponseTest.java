@@ -32,6 +32,11 @@ public class GetBookingResponseTest {
                 .additionalneeds("Wifi")
                 .build();
         Response createResponse = bookingService.createBooking(bookingRequest);
+        if (createResponse.getStatusCode() != 200) {
+            String errorMsg = "Failed to create booking in setup. Status: " + createResponse.getStatusLine() + ", Body: " + createResponse.asString();
+            Log.error(errorMsg);
+            throw new RuntimeException(errorMsg);
+        }
         bookingid = createResponse.jsonPath().getInt("bookingid");
         Log.info("Created booking with ID: " + bookingid);
     }
