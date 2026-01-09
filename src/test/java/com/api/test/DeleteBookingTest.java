@@ -3,6 +3,8 @@ package com.api.test;
 import com.api.base.BookingService;
 import com.api.base.GenerateTokenService;
 import com.api.base.GetBookingIDService;
+import com.api.models.request.BookingDates;
+import com.api.models.request.BookingRequest;
 import com.api.models.request.LoginRequest;
 import com.api.models.resoponse.LoginResponse;
 import io.restassured.response.Response;
@@ -28,11 +30,18 @@ public class DeleteBookingTest {
         token = loginResponse.getToken();
         Log.info("Token Creation Process Finished; Token: " + token);
 
-        Log.info("ID Fetch Process Started");
-        GetBookingIDService getBookingIDService = new GetBookingIDService();
-        Response response = getBookingIDService.getAllBookings();
-        bookingid = response.jsonPath().getInt("bookingid[0]");
-        Log.info("ID Fetch Process Finished; ID: " + bookingid);
+        Log.info("Creating a new booking for delete test");
+        BookingRequest bookingRequest = new BookingRequest.Builder()
+                .firstname("TestDelete")
+                .lastname("User")
+                .totalprice(100)
+                .depositpaid(true)
+                .bookingdates(new BookingDates("2024-01-01", "2024-01-02"))
+                .additionalneeds("None")
+                .build();
+        Response createResponse = bookingService.createBooking(bookingRequest);
+        bookingid = createResponse.jsonPath().getInt("bookingid");
+        Log.info("ID Created for Delete Test: " + bookingid);
     }
 
     @Test(

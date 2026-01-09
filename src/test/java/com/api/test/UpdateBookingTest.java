@@ -38,13 +38,20 @@ public class UpdateBookingTest {
         token = loginResponse.getToken();
         Log.debug("Token generated successfully");
 
-        Log.info("Fetching existing booking IDs");
-
-        GetBookingIDService getBookingIDService = new GetBookingIDService();
-        Response idResponse = getBookingIDService.getAllBookings();
-
-        bookingId = idResponse.jsonPath().getInt("bookingid[1]");
-        Log.info("Using bookingId: " + bookingId);
+        Log.info("Creating a new booking for test");
+        bookingService = new BookingService();
+        BookingRequest bookingRequest = new BookingRequest.Builder()
+                .firstname("Test")
+                .lastname("User")
+                .totalprice(100)
+                .depositpaid(true)
+                .bookingdates(new BookingDates("2024-01-01", "2024-01-02"))
+                .additionalneeds("None")
+                .build();
+        
+        Response createResponse = bookingService.createBooking(bookingRequest);
+        bookingId = createResponse.jsonPath().getInt("bookingid");
+        Log.info("Created booking with ID: " + bookingId);
     }
 
     @Test(

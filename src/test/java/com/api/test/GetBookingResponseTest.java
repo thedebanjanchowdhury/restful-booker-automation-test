@@ -1,7 +1,9 @@
 package com.api.test;
 
-import com.api.base.GetBookingIDService;
 import com.api.base.BookingService;
+import com.api.base.GetBookingIDService;
+import com.api.models.request.BookingDates;
+import com.api.models.request.BookingRequest;
 import com.api.models.resoponse.GetBookingResponse;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -18,12 +20,20 @@ public class GetBookingResponseTest {
 
     @BeforeClass
     public void setup() {
-        Log.info("Setup Method, Extracting Booking ID");
+        Log.info("Setup Method, Creating Booking for test");
         bookingService = new BookingService();
-        GetBookingIDService getBookingIDService = new GetBookingIDService();
-
-        Response idResponse = getBookingIDService.getAllBookings();
-        bookingid = idResponse.jsonPath().getInt("bookingid[0]");
+        
+        BookingRequest bookingRequest = new BookingRequest.Builder()
+                .firstname("GetTest")
+                .lastname("User")
+                .totalprice(150)
+                .depositpaid(true)
+                .bookingdates(new BookingDates("2024-03-01", "2024-03-05"))
+                .additionalneeds("Wifi")
+                .build();
+        Response createResponse = bookingService.createBooking(bookingRequest);
+        bookingid = createResponse.jsonPath().getInt("bookingid");
+        Log.info("Created booking with ID: " + bookingid);
     }
 
     @Test(

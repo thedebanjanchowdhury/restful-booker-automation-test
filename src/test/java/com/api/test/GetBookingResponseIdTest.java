@@ -85,7 +85,11 @@ public class GetBookingResponseIdTest {
         List<Integer> bookingIds = response.jsonPath().getList("bookingid");
         Assert.assertNotNull(bookingIds, "BookingResponse ID List is Null");
         Assert.assertFalse(bookingIds.isEmpty(), "BookingResponse ID List is Empty");
-        System.out.println(bookingIds.get(1));
+        if (bookingIds.size() > 1) {
+            System.out.println(bookingIds.get(1));
+        } else {
+            System.out.println(bookingIds.get(0));
+        }
 
         // Validate Each booking ID
         Log.info("Assertion for All Returned Booking IDs");

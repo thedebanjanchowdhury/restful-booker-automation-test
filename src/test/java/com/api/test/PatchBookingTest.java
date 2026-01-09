@@ -36,11 +36,18 @@ public class PatchBookingTest {
         token = loginResponse.getToken();
         Log.info("Token Created: " + token);
 
-        Log.info("Booking Id Creation Started");
-        GetBookingIDService  getBookingIDService = new GetBookingIDService();
-        response = getBookingIDService.getAllBookings();
-        bookingId = response.jsonPath().getInt("bookingid[0]");
-        Log.info("Booking Id Created: " + bookingId);
+        Log.info("Creating a new booking for Patch Test");
+        BookingRequest bookingRequest = new BookingRequest.Builder()
+                .firstname("PatchTest")
+                .lastname("User")
+                .totalprice(500)
+                .depositpaid(true)
+                .bookingdates(new BookingDates("2024-05-01", "2024-05-10"))
+                .additionalneeds("Lunch")
+                .build();
+        Response createResponse = bookingService.createBooking(bookingRequest);
+        bookingId = createResponse.jsonPath().getInt("bookingid");
+        Log.info("Created booking for patch test with ID: " + bookingId);
     }
 
     @Test(
