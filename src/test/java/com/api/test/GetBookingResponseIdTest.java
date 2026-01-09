@@ -39,6 +39,10 @@ public class GetBookingResponseIdTest {
                 .build();
 
         Response createResponse = bookingService.createBooking(request);
+        if (createResponse.getStatusCode() != 200) {
+            String errorMsg = "Failed booking in test. Status: " + createResponse.getStatusLine() + ", Body: " + createResponse.asString();
+            Log.error(errorMsg);
+        }
         createResponse.then().statusCode(200);
 
         CreateBookingResponse createBookingResponse =
