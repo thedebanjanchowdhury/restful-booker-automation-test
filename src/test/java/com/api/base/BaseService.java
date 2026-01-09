@@ -16,6 +16,10 @@ public class BaseService {
                 .baseUri(BASE_URL)
                 .contentType(ContentType.JSON)
                 .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+                .header("Accept", "application/json")
+                .header("Accept-Language", "en-US,en;q=0.9")
+                .header("Connection", "keep-alive")
+                .header("Upgrade-Insecure-Requests", "1")
                 .accept(ContentType.JSON);
     }
 
