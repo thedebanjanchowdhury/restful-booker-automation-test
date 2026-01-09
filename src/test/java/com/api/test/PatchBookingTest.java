@@ -21,7 +21,7 @@ public class PatchBookingTest {
     private int bookingId;
     private String token;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         Log.info("Setup Method");
         bookingService = new BookingService();

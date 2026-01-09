@@ -18,7 +18,7 @@ public class GetBookingResponseTest {
     private BookingService bookingService;
     private int bookingid;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         Log.info("Setup Method, Creating Booking for test");
         bookingService = new BookingService();

@@ -22,9 +22,9 @@ public class BaseService {
         return getNewSpec().body(payload).post(endpoint);
     }
 
-//    protected Response getRequest (Object payload, String endpoint) {
-//        return getNewSpec().body(payload).get(endpoint);
-//    }
+    protected Response getRequest (Object payload, String endpoint) {
+        return getNewSpec().body(payload).get(endpoint);
+    }
 
     protected Response getRequest (String endpoint) {
         return getNewSpec().get(endpoint);

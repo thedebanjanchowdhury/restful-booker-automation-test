@@ -17,7 +17,7 @@ public class CreateBookingResponseTest {
     private BookingService bookingService;
     private BookingRequest request1,request2;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         Log.info("Initializing BookingService and BookingRequest");
 

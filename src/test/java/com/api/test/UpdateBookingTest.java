@@ -21,7 +21,7 @@ public class UpdateBookingTest {
     private String token;
     private int bookingId;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
 
         Log.info("Generating auth token");

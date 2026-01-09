@@ -18,7 +18,7 @@ public class DeleteBookingTest {
     private int bookingid;
     private BookingService bookingService;
 
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup () {
 
         bookingService = new BookingService();
