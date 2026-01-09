@@ -23,7 +23,21 @@ public class GenerateTokenTest {
         LoginRequest request = new LoginRequest.Builder().username("admin").password("password123").build();
 
         GenerateTokenService tokenService = new GenerateTokenService();
-        LoginResponse response = tokenService.login(request).as(LoginResponse.class);
+        Response resp = tokenService.login(request);
+        
+        if (resp.getStatusCode() == 418) {
+            String warningMsg = "API Blocked (418 I'm a teapot). Skipping test.";
+            Log.warn(warningMsg);
+            throw new org.testng.SkipException(warningMsg);
+        }
+        
+        if (resp.getStatusCode() != 200) {
+             String errorMsg = "Login failed in test. Status: " + resp.getStatusLine() + ", Body: " + resp.asString();
+             Log.error(errorMsg);
+             Assert.fail(errorMsg); // Fail explicitly if not 418 but not 200
+        }
+
+        LoginResponse response = resp.as(LoginResponse.class);
         Assert.assertNotNull(response);
         Log.info("Authentication Process Ended, token: " + response.getToken());
     }
@@ -36,8 +50,15 @@ public class GenerateTokenTest {
         Log.info("Unauthorized Authentication Process Started");
         LoginRequest loginRequest = new LoginRequest.Builder().username("debanjan").password("debanjan123").build();
         GenerateTokenService tokenService = new GenerateTokenService();
-        tokenService.login(loginRequest)
-                .then()
+        Response resp = tokenService.login(loginRequest);
+        
+        if (resp.getStatusCode() == 418) {
+            String warningMsg = "API Blocked in auth failure test (418). Skipping.";
+            Log.warn(warningMsg);
+            throw new org.testng.SkipException(warningMsg);
+        }
+
+        resp.then()
                 .statusCode(200)
                 .body("reason", equalTo("Bad credentials"));
         Log.info("Unauthorized Authentication Process Ended Successfully");
