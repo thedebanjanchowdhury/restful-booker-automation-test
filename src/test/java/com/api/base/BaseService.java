@@ -10,11 +10,6 @@ import java.util.Map;
 
 public class BaseService {
     private static final String BASE_URL = "https://restful-booker.herokuapp.com";
-    private RequestSpecification requestSpecification;
-
-    public BaseService() {
-        requestSpecification = given().baseUri(BASE_URL);
-    }
 
     protected RequestSpecification getNewSpec() {
         return given()
@@ -28,7 +23,7 @@ public class BaseService {
     }
 
     protected Response getRequest (Object payload, String endpoint) {
-        return getNewSpec().body(payload).post(endpoint);
+        return getNewSpec().body(payload).get(endpoint);
     }
 
     protected Response getRequest (String endpoint) {
